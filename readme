@@ -1,6 +1,24 @@
-1. Perskaiciau tasko taisykles, daugiau research apie zaidima
-2. 1 prototipas create board ir print board
-3. count neighbors procedura
-4. Kodel kuriu nauja boarda kiekviena karta, nes tai trukdytu skaiciuoti teisingai cells, pvz calculate cell(0,0), tada skaiciuojant cell (0,1) nauja verte cell(0,0)
- neatitiks originalios jau kas trukdys teisingai suskaiciuot cell(0,1)
-5.
+# Conway's Game of Life
+
+## Kaip paleisti
+
+1. Klonuoti repositorija arba atsisiusti `gameOfLife.py`.
+2. Terminale paleisti: python game_of_life.py
+
+## Laiko ideta:
+
+Apie valanda, papildomai sau daugiau laiko skyriau prisimint syntaxa ir suprast logika
+
+## Ka naudojau pagalbai
+
+Naudojau ChatGPT kaip assistenta su python syntaxu, suplanuot implementacija, ir suprast giliau zaidimo logika ir solutiona.
+
+## Sprendimai
+
+2D sarasas, nes patogiausias ir paprasciausias sprendimas sitam taskui, naturaliai galima pasiekti pagal row ir coumn indeksus kiekviena langeli, alternatyva naudoti set su gyvu langeliu kordinatemis, nusprendziau kad nereikalingai labiau kompliksuotas sprendimas butu sitai uzduociai, bet elementu paieska butu efektyvesne(time complexity O(n) vietoj O(height x width))
+
+Atskira nauja lenta/boardas kiekvienai generacijai, tokiu budu uztikrinau kad visi langeliai butu skaiciuojami pagal ankstesnes generacijos langeliu busenas. Alternatyva keisti esamoj lentelej, taciau tuomet atnaujinti langgeliai galetu paveikti kitu langeliu skaiciavimus
+
+Kaimynu skaiciavimas naudojant offset, pasirinkau du nested ciklus su [-1,0,1], nes taip patikrinu visas 8 aplinkines pozicijas, alternatyva butu rankiniu butu aprasyti kiekviena is 8 poziciju, bet pasikartotu kodas ir maziau lankstesnis
+
+Atskirti lentos generavima ir atvaizdavima, atskiros proceduros, kad lentos duomenu struktura nebutu susieta su atvaizdavimu, lengviau keisti sprendima ateiti ir atskirti procesus, alternatyva viska daryti vienoje funkcijoje
