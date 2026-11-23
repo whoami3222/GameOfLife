@@ -1,15 +1,17 @@
-
+import time
 import random
 
 # Configuration
 WIDTH = 10
 HEIGHT = 10
 ALIVE_PROBABILITY = 0.3
+GENERATIONS = 100
+DELAY = 0.2
 
 
 def create_board(width, height):
+    #Sukuriu boarda pagal nustatyta width ir height, ir pagal alive probability random priskiriu alive/dead statusa
     board = []
-
     for row in range(height):
         new_row = []
 
@@ -24,6 +26,7 @@ def create_board(width, height):
     return board
 
 def count_neighbors(board, row, col):
+    #skaiciuoju alive neighbors aplink cell
     height = len(board)
     width = len(board[0])
 
@@ -44,6 +47,34 @@ def count_neighbors(board, row, col):
 
     return neighbors
 
+def next_generation(board):
+    height = len(board)
+    width = len(board[0])
+
+    new_board = []
+
+    for row in range(height):
+        new_row = []
+
+        for col in range(width):
+            neighbors = count_neighbors(board, row, col)
+            cell = board[row][col]
+
+            if cell == 1:
+                if neighbors == 2 or neighbors == 3:
+                    new_row.append(1)
+                else:
+                    new_row.append(0)
+            else:
+                if neighbors == 3:
+                    new_row.append(1)
+                else:
+                    new_row.append(0)
+
+        new_board.append(new_row)
+
+    return new_board
+
 
 def print_board(board):
     for row in board:
@@ -59,17 +90,15 @@ def print_board(board):
 
 
 def main():
-    board = [
-        [0, 1, 0],
-        [1, 1, 0],
-        [0, 0, 1]
-    ]
+    board = create_board(WIDTH, HEIGHT)
 
-    print_board(board)
+    for generation in range(GENERATIONS + 1):
+        print(f"\nGeneration {generation}")
+        print_board(board)
 
-    print("Middle:", count_neighbors(board, 1, 1))
-    print("Top-left:", count_neighbors(board, 0, 0))
-    print("Bottom-right:", count_neighbors(board, 2, 2))
+        if generation < GENERATIONS:
+            time.sleep(DELAY)
+            board = next_generation(board) #replacina boarda su nauja versija boardo
 
 
 if __name__ == "__main__":

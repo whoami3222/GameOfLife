@@ -1,3 +1,6 @@
 1. Perskaiciau tasko taisykles, daugiau research apie zaidima
 2. 1 prototipas create board ir print board
 3. count neighbors procedura
+4. Kodel kuriu nauja boarda kiekviena karta, nes tai trukdytu skaiciuoti teisingai cells, pvz calculate cell(0,0), tada skaiciuojant cell (0,1) nauja verte cell(0,0)
+ neatitiks originalios jau kas trukdys teisingai suskaiciuot cell(0,1)
+5.
