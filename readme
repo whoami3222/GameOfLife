@@ -3,7 +3,7 @@
 ## Kaip paleisti
 
 1. Klonuoti repositorija arba atsisiusti `gameOfLife.py`.
-2. Terminale paleisti: python game_of_life.py
+2. Terminale paleisti: python gameOfLife.py
 
 ## Laiko ideta:
 
